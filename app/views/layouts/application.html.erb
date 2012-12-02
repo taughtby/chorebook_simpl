@@ -7,10 +7,27 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-	
-<!-- sort flash hash -->
+	<%= render 'layouts/nav' %>
 
-<%= yield %>
+	<div class="container">
+
+			<div class="topshit">
+				<div class="centre-nav">	
+
+					<div class="download_btn"><%= image_tag 'web-buttons.png' %></div>
+					<div class="download_btn"><%= image_tag 'web-buttons.png' %></div>
+					<div class="download_btn"><%= image_tag 'web-buttons.png' %></div>
+
+				</div>
+
+
+
+
+	    </div>
+	    <div class="bottomshit">
+	    	<%= yield %> 
+	    </div>   
+
 
 </body>
 </html>

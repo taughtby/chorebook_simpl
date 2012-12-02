@@ -29,6 +29,7 @@
 	<% @child.chores.incomplete.each do |chore| %>          
 	<li><%= chore.name %>, <%= chore.points %>pts, <%= chore.due_date.strftime("due: %A") %>- <%= button_to "Complete", complete_chore_path(@child.id, chore.id) %></li>
 	
+	
 	<% end %>
 </ul>
 
@@ -36,6 +37,7 @@
 <ul id="completed">
 	<% @child.chores.completed.each do |chore| %>
 	<li><%= chore.name %></li>
+	
 	<% end %>
 </ul>
 
@@ -43,10 +45,10 @@
 
 <%= form_for [@child, @child.chores.new] do |f| %>
 
-<p><%= f.text_field :name, placeholder: 'describe chore...' %> 
+<%= f.text_field :name, placeholder: 'describe chore...' %> 
 	<%= f.number_field :points, placeholder: 'points...' %> 
-	<%= f.date_select :due_date, placeholder: 'due date...' %>
-<%= f.submit %></p>
+	<%= f.text_field :due_date, placeholder: 'due date...' %>
+<%= f.submit %>
 
 <% end %>
 

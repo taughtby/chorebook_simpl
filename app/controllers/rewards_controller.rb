@@ -1,4 +1,8 @@
 class RewardsController < ApplicationController
+  
+  attr_accessor :rewarded
+  before_filter :authenticate_user!
+  
   # GET /rewards
   # GET /rewards.json
   def index
@@ -40,18 +44,19 @@ class RewardsController < ApplicationController
   # POST /rewards
   # POST /rewards.json
   def create
-    @reward = Reward.new(params[:reward])
+     @child = Child.find(params[:child_id])
+     @reward = @child.rewards.new(params[:reward])
 
-    respond_to do |format|
-      if @reward.save
-        format.html { redirect_to @reward, notice: 'Reward was successfully created.' }
-        format.json { render json: @reward, status: :created, location: @reward }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @reward.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+     respond_to do |format|
+       if @reward.save
+         format.html { redirect_to child_url(@child), notice: 'Reward was successfully created.' }
+         #figure out the json l8ter
+       else
+         format.html { redirect_to child_url(@child) }
+         #figure out the json l8ter
+       end
+     end
+   end
 
   # PUT /rewards/1
   # PUT /rewards/1.json
@@ -79,5 +84,13 @@ class RewardsController < ApplicationController
       format.html { redirect_to rewards_url }
       format.json { head :no_content }
     end
+  end
+  
+  def rewarded
+    @child = Child.find(params[:children_id])
+    @reward = @child.rewards.find(params[:id])
+    @reward.rewarded = true
+    @reward.save
+    redirect_to child_url(@child)
   end
 end

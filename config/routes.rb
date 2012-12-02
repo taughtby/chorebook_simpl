@@ -1,14 +1,17 @@
 CheerioBook::Application.routes.draw do
 
+  devise_for :users
+
   resources :children do
     resources :rewards
     resources :chores
   end
   
   match 'children/:children_id/chores/:id/complete' => 'chores#complete', :as => :complete_chore
-  # match 'lists/:list_id/tasks/:id/complete' => 'rewards#complete', :as => :complete_reward
+  match 'children/:children_id/rewards/:id/rewarded' => 'rewards#complete', :as => :complete_reward
   
-  root to: 'chores#index'
+  
+  root to: 'children#index'
   
   
   

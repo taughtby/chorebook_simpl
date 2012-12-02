@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @child.name %>
+</p>
+
+<p>
+  <b>Image:</b>
+  <%= image_tag @child.image_url(:thumb) %>
+</p>
+
+<p>
+  <b>Bank:</b>
+  <%= @child.bank %> <p>Pts</p>
+</p>
+
+<p>
+  <b>Dob:</b>
+  <%= @child.dob %>
+</p>
+
+
+<%= link_to (image_tag 'edit_16.png'), edit_child_path(@child) %> |
+<%= link_to "back", children_path %>
+
+<h3>Stuff to do</h3>
+<ul>
+	<% @child.chores.incomplete.each do |chore| %>
+	<li><%= chore.name %> - <%= button_to "Complete", complete_chore_path(@child.id, chore.id) %></li>
+	<% end %>
+</ul>
+
+<h3>Stuff I've done</h3>
+<ul id="completed">
+	<% @child.chores.completed.each do |chore| %>
+	<li><%= chore.name %></li>
+	<% end %>
+</ul>
+
+<hr />
+
+<%= form_for [@child, @child.chores.new] do |f| %>
+
+<p><%= f.text_field :name %> <%= f.submit %></p>
+
+<% end %>
+
+<hr />
+<%= link_to "Back to children", children_url %>
+
+
+
+

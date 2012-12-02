@@ -1,0 +1,18 @@
+<h1>Children</h1>
+
+<% @children.each do |child| %>
+ 
+    <%= link_to child.name, child_path(child) %>
+    <%= image_tag child.image_url(:thumb) %>
+    <%= child.bank %>
+    <%= child.dob %>
+    <%= link_to 'Show', child %>
+    <%= link_to (image_tag 'edit_16.png'), edit_child_path(child) %>
+    <%= link_to (image_tag'1354409256_delete.png'), child, method: :delete, data: { confirm: 'Are you sure?' } %>
+  
+<% end %>
+
+
+<br />
+
+<%= link_to 'New Child', new_child_path %>

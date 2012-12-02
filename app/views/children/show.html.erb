@@ -24,14 +24,15 @@
 <%= link_to (image_tag 'edit_16.png'), edit_child_path(@child) %> |
 <%= link_to "back", children_path %>
 
-<h3>Stuff to do</h3>
+<h4>Chores</h4>
 <ul>
-	<% @child.chores.incomplete.each do |chore| %>
-	<li><%= chore.name %> - <%= button_to "Complete", complete_chore_path(@child.id, chore.id) %></li>
+	<% @child.chores.incomplete.each do |chore| %>          
+	<li><%= chore.name %>, <%= chore.points %>pts, <%= chore.due_date.strftime("due: %A") %>- <%= button_to "Complete", complete_chore_path(@child.id, chore.id) %></li>
+	
 	<% end %>
 </ul>
 
-<h3>Stuff I've done</h3>
+<h4>Completed Chores</h4>
 <ul id="completed">
 	<% @child.chores.completed.each do |chore| %>
 	<li><%= chore.name %></li>
@@ -42,7 +43,10 @@
 
 <%= form_for [@child, @child.chores.new] do |f| %>
 
-<p><%= f.text_field :name %> <%= f.submit %></p>
+<p><%= f.text_field :name, placeholder: 'describe chore...' %> 
+	<%= f.number_field :points, placeholder: 'points...' %> 
+	<%= f.date_select :due_date, placeholder: 'due date...' %>
+<%= f.submit %></p>
 
 <% end %>
 

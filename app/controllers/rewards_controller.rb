@@ -86,7 +86,7 @@ class RewardsController < ApplicationController
     end
   end
   
-  def rewarded
+  def complete
     @child = Child.find(params[:children_id])
     @reward = @child.rewards.find(params[:id])
     @reward.rewarded = true

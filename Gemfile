@@ -42,3 +42,4 @@ gem 'rmagick'
 gem 'devise'
 gem 'simple_form'
 gem 'jquery-ui-rails'
+gem 'quiet_assets', :group => :development

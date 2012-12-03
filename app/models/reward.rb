@@ -1,6 +1,9 @@
 class Reward < ActiveRecord::Base
   attr_accessible :child_id, :costs, :image, :name, :rewarded
   
+  validates :costs, presence: true
+  validates :name, presence: true
+  
   belongs_to :child
   
   mount_uploader :image, ImageUploader

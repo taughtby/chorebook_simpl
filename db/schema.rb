@@ -11,15 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121202052207) do
+ActiveRecord::Schema.define(:version => 20121202173244) do
 
   create_table "children", :force => true do |t|
     t.string   "name"
     t.string   "image"
-    t.integer  "bank"
     t.date     "dob"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+    t.integer  "bank",       :default => 0
   end
 
   create_table "chores", :force => true do |t|

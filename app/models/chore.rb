@@ -1,6 +1,7 @@
 class Chore < ActiveRecord::Base
   attr_accessible :child_id, :completed, :due_date, :name, :points
   
+
   # sort out flash message for validations
   validates :name, presence: true
   validates :points, presence: true
@@ -10,6 +11,8 @@ class Chore < ActiveRecord::Base
   belongs_to :child
   scope :completed, where(:completed => true)
   scope :incomplete, where(:completed => false)
+  
+  
   
  
   

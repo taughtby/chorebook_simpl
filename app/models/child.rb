@@ -1,7 +1,7 @@
 class Child < ActiveRecord::Base
   attr_accessible :bank, :dob, :image, :name
   
-  #before_save :calculate_bank
+  # before_save :calculate_bank
   
   validates :name, presence: true
   
@@ -10,12 +10,15 @@ class Child < ActiveRecord::Base
   
   mount_uploader :image, ImageUploader
  
+ 
   
   # def calculate_bank
-  #     if self.completed == true
-  #       self.child.bank += self.points
-  #       self.save
-  #     end
-  #   end
+  #      if self.chores.completed == true 
+  #          self.bank += self.chores.points
+  #          self.save
+  #      else
+  #        
+  #      end  
+  #  end
   
 end

@@ -2,8 +2,8 @@
 
 
 <div id="box_sign">
-    <div class="container">
-        <div class="span12 box_wrapper">
+  
+       
             <div class="span12 box">
                 <div>
                     <div class="head">
@@ -17,8 +17,9 @@
 												    <%= f.input :email, :required => true, :autofocus => true, :label => false %>
 												    <%= f.input :password, :autocomplete => "off", :label => false, placeholder: 'password'  %>
 												    <%= f.input :password_confirmation, :required => false, :label => false, placeholder: 'confirm password'  %>
-												    <%= f.input :current_password, :label => false, placeholder: 'current password' %>
-
+												<% if f.object.encrypted_password.present? %>
+												    <%= f.input :current_password, :label => false, placeholder: 'current password' %>      
+                        <% end %>
 												  
 												    <%= f.button :submit, "Update", class: "btn" %>
 												 
@@ -27,10 +28,10 @@
 										
                     </div>
                 </div>
-            </div>
+            
             <p class="already">
                 <%= link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %>
-    </div>
+  
 </div>
 
 

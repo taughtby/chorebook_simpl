@@ -16,7 +16,7 @@
 	  <h4>Chores</h4>
 		<ul class="incomplete">
 			<% @child.chores.incomplete.each do |chore| %>          
-			  <li><%= chore.name %>, <%= chore.points %>pts, <%= chore.due_date.strftime("due: %A") %> - <%= button_to "Complete", complete_chore_path(@child.id, chore.id) %></li>
+			  <li><%= chore.name %>, <%= chore.points %>pts, <%= chore.due_date.strftime("due: %A") %> - <%= link_to "Done", complete_chore_path(@child.id, chore.id) %></li>
 	  	<% end %>
 		</ul>
 
@@ -48,7 +48,7 @@
 		<ul class="incomplete">
 			<% @child.rewards.incomplete.each do |reward| %>  
 			        
-			<li><%= image_tag reward.image_url(:tiny) %><%= reward.name %>, <%= reward.costs %>pts, - <%= button_to "Reward", complete_reward_path(@child.id, reward.id) %></li>
+			<li><%= image_tag reward.image_url(:tiny) %><%= reward.name %>, <%= reward.costs %>pts, - <%= button_to "Done", complete_reward_path(@child.id, reward.id) %></li>
 			<% end %>
 		</ul>
 

@@ -12,10 +12,12 @@ class Chore < ActiveRecord::Base
   scope :completed, where(:completed => true)
   scope :incomplete, where(:completed => false)
   
-  
-  
- 
-  
+  after_save :update_bank
+
+  def update_bank
+    # this will call calculate_bank on before save
+    child.save
+  end  
 end
 
 

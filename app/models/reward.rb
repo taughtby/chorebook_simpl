@@ -10,4 +10,11 @@ class Reward < ActiveRecord::Base
   
   scope :completed, where(:rewarded => true)
   scope :incomplete, where(:rewarded => false)
+  
+  after_save :update_bank
+  
+  def update_bank
+    # this will call calculate_bank on before save
+    child.save
+  end
 end

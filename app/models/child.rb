@@ -20,8 +20,16 @@ class Child < ActiveRecord::Base
       b += chore.points
     end
 
+    self.rewards.where(rewarded: true).each do |reward|
+      b -= reward.costs
+    end
     # set the bank to the total
     self.bank = b
+  end
+  
+  def age
+     now = Time.now.utc.to_date
+     now.year - birthday.year - (birthday.to_date.change(:year => now.year) > now ? 1 : 0)
   end
   
 end

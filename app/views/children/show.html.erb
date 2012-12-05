@@ -16,7 +16,7 @@
 	  <h4>Chores</h4>
 		<ul class="incomplete">
 			<% @child.chores.incomplete.each do |chore| %>          
-			  <li><%= chore.name %>, <%= chore.points %>pts, <%= chore.due_date.strftime("due: %A") %> - <%= link_to "Done", complete_chore_path(@child.id, chore.id) %></li>
+			  <li><%= chore.name %>, <%= chore.points %>pts, <%= chore.due_date.strftime("due: %A") %> - <span id="done_button"><%= link_to "Done", complete_chore_path(@child.id, chore.id) %></span></li>
 	  	<% end %>
 		</ul>
 

@@ -81,9 +81,16 @@ class RewardsController < ApplicationController
     @reward.destroy
 
     respond_to do |format|
-      format.html { redirect_to rewards_url }
+      format.html { redirect_to child_url(@child) }
       format.json { head :no_content }
     end
+  end
+  
+  def delete
+    @child = Child.find(params[:children_id])
+    @reward = @child.rewards.find(params[:id])
+    @reward.destroy
+    redirect_to child_url(@child)
   end
   
   def complete

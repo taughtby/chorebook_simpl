@@ -5,3 +5,7 @@
 jQuery ->
   $('#chore_due_date').datepicker
     dateFormat: 'yy-mm-dd'
+
+$ ->
+	$('ul.incomplete li span.admin').hover (event) ->
+		$(this).toggleClass("hover")

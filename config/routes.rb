@@ -8,7 +8,11 @@ CheerioBook::Application.routes.draw do
   end
   
   match 'children/:children_id/chores/:id/complete' => 'chores#complete', :as => :complete_chore
+  match 'children/:children_id/chores/:id/delete' => 'chores#delete', :as => :delete_chore
+  
+  
   match 'children/:children_id/rewards/:id/rewarded' => 'rewards#complete', :as => :complete_reward
+  match 'children/:children_id/rewards/:id/delete' => 'rewards#delete', :as => :delete_reward
   
   
   root to: 'children#index'

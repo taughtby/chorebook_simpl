@@ -30,13 +30,20 @@ ul.completed li  {
 	 &:hover { background: #e0F7FC; }
 }
 
-ul.incompleted{
-  border-bottom: 1px solid #eee; 
-}
+ul.incomplete li span.admin
 
 ul.incomplete li  {
 	border-bottom: 1px solid #eee;
 	 &:hover { background: #e0F7FC; }
+}
+
+
+
+
+
+
+ul.incomplete li.hover span.admin {
+	display: inline;
 }
 
 .feature {

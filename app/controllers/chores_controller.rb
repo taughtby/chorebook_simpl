@@ -95,10 +95,14 @@ class ChoresController < ApplicationController
   end
   
   
-  def age
-    now = Time.now.utc.to_date
-    now.year - birthday.year - (birthday.to_date.change(:year => now.year) > now ? 1 : 0)
+  def delete
+    @child = Child.find(params[:children_id])
+    @chore = @child.chores.find(params[:id])
+    @chore.destroy
+    redirect_to child_url(@child)
   end
+  
+  
 end 
 
 
